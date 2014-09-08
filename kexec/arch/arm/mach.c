@@ -3,10 +3,12 @@
 
 extern const struct arch_mach arm_mach_hammerhead;
 extern const struct arch_mach arm_mach_shamu;
+extern const struct arch_mach arm_mach_m8;
 extern const struct arch_mach arm_mach_titan;
 static const struct arm_mach *const arm_machs[] = {
     &arm_mach_hammerhead,
     &arm_mach_shamu,
+    &arm_mach_m8,
     &arm_mach_titan,
     NULL
 };
