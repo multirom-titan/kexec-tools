@@ -104,7 +104,7 @@ void zImage_arm_usage(void)
 		"     --ramdisk=FILE        Use FILE as the kernel's initial ramdisk.\n"
 		"     --dtb(=dtb.img)       Load dtb from zImage, dtb.img or /proc/device-tree instead of using atags.\n"
 		"                           DTB appended to zImage and dtb.img currently only works on MSM devices.\n"
-		"     --boardname=NAME      Required if using DTB. Options: hammerhead\n"
+		"     --boardname=NAME      Required if using DTB. Options: hammerhead bacon d851 shamu\n"
 		"     --rd-addr=<addr>      Address to load initrd to.\n"
 		"     --atags-addr=<addr>   Address to load atags/dtb to.\n"
 		);
@@ -413,7 +413,7 @@ int zImage_arm_load(int argc, char **argv, const char *buf, off_t len,
 					"Bad option value in --rd-addr=%s\n",
 					optarg);
 				usage();
-				return 1;
+				return -1;
 			}
 			break;
 		case OPT_ATAGS_ADDR:
@@ -423,7 +423,7 @@ int zImage_arm_load(int argc, char **argv, const char *buf, off_t len,
 					"Bad option value in --atag-addr=%s\n",
 					optarg);
 				usage();
-				return 1;
+				return -1;
 			}
 			break;
 		case OPT_BOARDNAME:
@@ -431,7 +431,7 @@ int zImage_arm_load(int argc, char **argv, const char *buf, off_t len,
 			if(!mach)
 			{
 				fprintf(stderr, "Unknown boardname '%s'!\n", optarg);
-				return 1;
+				return -1;
 			}
 			break;
 		}
